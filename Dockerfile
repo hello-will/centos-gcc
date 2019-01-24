@@ -56,3 +56,11 @@ RUN mkdir cmake && cd cmake && \
     ./configure --prefix=/usr && \
     make -j4 && make install && \
     cd ../../ && rm -rf cmake    
+
+RUN mkdir automake && cd automake && \
+    wget ftp://ftp.gnu.org/gnu/automake/automake-1.16.1.tar.gz && \
+    tar -zxvf automake-1.16.1.tar.gz && \
+    cd automake-1.16.1 && \
+    ./configure --prefix=/usr && \
+    make -j4 && make install && \
+    cd ../../ && rm -rf automake
