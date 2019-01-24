@@ -1,4 +1,4 @@
-FROM centos
+FROM centos:latest
 
 RUN yum provides '*/applydeltarpm' && \
     yum -y install deltarpm && \
