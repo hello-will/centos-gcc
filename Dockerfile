@@ -3,7 +3,7 @@ FROM centos:latest
 RUN yum provides '*/applydeltarpm' && \
     yum -y install deltarpm && \
     yum grouplist && \
-	  yum -y install gcc gcc-c++ vim wget curl tar bzip2 zip unzip xz make texinfo && \
+	  yum -y install gcc gcc-c++ vim wget curl tar bzip2 zip unzip xz make texinfo file && \
 	  yum -y install kde-l10n-Chinese && \
 	  localedef -c -f UTF-8 -i zh_CN zh_CN.utf8 && \
 	  rm -rf /var/cache/yum
