@@ -7,9 +7,9 @@ RUN yum provides '*/applydeltarpm' && \
 	  yum -y install kde-l10n-Chinese && \
 	  localedef -c -f UTF-8 -i zh_CN zh_CN.utf8 && \
 	  rm -rf /var/cache/yum
-ENV	LC_ALL zh_CN.UTF-8
+ENV LC_ALL zh_CN.UTF-8
 
-RUN mkdir gcc7 && cd gcc7 && \
+RUN mkdir gcc && cd gcc && \
     wget http://mirror.linux-ia64.org/gnu/gcc/releases/gcc-7.4.0/gcc-7.4.0.tar.xz && \
     wget http://mirror.linux-ia64.org/gnu/gcc/infrastructure/cloog-0.18.1.tar.gz && \
     wget http://mirror.linux-ia64.org/gnu/gcc/infrastructure/cloog-parma-0.16.1.tar.gz && \
@@ -38,8 +38,16 @@ RUN mkdir gcc7 && cd gcc7 && \
     ln -s ../ppl-0.11 ppl && \
     ./configure --prefix=/usr --enable-checking=release --enable-languages=c,c++ --disable-multilib --enable-host-shared && \
     make -j4 && make install && \
-    cd ../../ && rm -rf gcc7
-    
+    cd ../../ && rm -rf gcc
+
+RUN mkdir gdb && cd gdb && \
+    wget http://ftp.gnu.org/gnu/gdb/gdb-8.2.1.tar.xz && \
+    xz -d gdb-8.2.1.tar.xz && \
+    tar -xvf gdb-8.2.1.tar && \
+    cd gdb-8.2.1 && \
+    ./configure --prefix=/usr && \
+    make -j4 && make install && \
+    cd ../../ && rm -rf gdb
 
 
     
