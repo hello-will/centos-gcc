@@ -50,7 +50,7 @@ RUN mkdir gdb && cd gdb && \
     cd ../../ && rm -rf gdb
 
 RUN mkdir cmake && cd cmake && \
-    wget https://github.com/Kitware/CMake/releases/download/v3.13.2/cmake-3.13.2.tar.gz && \
+    wget https://github.com/Kitware/CMake/releases/download/v3.13.3/cmake-3.13.3.tar.gz && \
     tar -zxvf cmake-3.13.2.tar.gz && \
     cd cmake-3.13.2 && \
     ./configure --prefix=/usr && \
